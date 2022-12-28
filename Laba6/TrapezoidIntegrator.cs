@@ -8,6 +8,10 @@ namespace Laba6
 {
     public class TrapezoidIntegrator : Integrator
     {
+        public override string MethodName
+        {
+            get { return "Метод трапеций"; }
+        }
         public TrapezoidIntegrator(Equation equation) : base(equation) { }
 
         public override double Integrate(double x1, double x2)

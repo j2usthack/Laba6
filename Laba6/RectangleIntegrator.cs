@@ -8,6 +8,11 @@ namespace Laba6
 {
     public class RectangleIntegrator : Integrator
     {
+        public override string MethodName
+        {
+            get { return "Метод прямоугольников"; }
+        }
+
         public RectangleIntegrator(Equation equation) : base(equation) { }
 
         public override double Integrate(double x1, double x2)

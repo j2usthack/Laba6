@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Laba6
 {
-    public class Integrator
+    public abstract class Integrator
     {
+        public abstract string MethodName { get; }
+
         public readonly Equation equation;
         /// <summary>
         /// Конструктор класса "интегратор"

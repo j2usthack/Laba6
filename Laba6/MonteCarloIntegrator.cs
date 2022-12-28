@@ -8,6 +8,10 @@ namespace Laba6
 {
     public class MonteCarloIntegrator : Integrator
     {
+        public override string MethodName
+        {
+            get { return "Метод Монте-Карло"; }
+        }
         private readonly int N; // количество точек, подлежащих "наброску"
 
         public MonteCarloIntegrator(Equation equation, int N) : base(equation)

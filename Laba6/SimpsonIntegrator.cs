@@ -8,6 +8,10 @@ namespace Laba6
 {
     public class SimpsonIntegrator : Integrator
     {
+        public override string MethodName
+        {
+            get { return "Метол Симпсона(Парабол)"; }
+        }
         public SimpsonIntegrator(Equation equation) : base(equation)
         {
 
