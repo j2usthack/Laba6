@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RectangleIntegratorv2.cs" />
+    <Compile Include="IntegratedEquation.cs" />
     <Compile Include="Draw.cs" />
     <Compile Include="CosEquation.cs" />
     <Compile Include="CosXEquation.cs" />

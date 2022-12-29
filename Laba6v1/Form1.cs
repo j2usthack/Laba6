@@ -36,25 +36,59 @@ namespace Laba6v1
             }
             return true;
         }
-            //void IsEmpty()
-            //{
-            //    double x1, x2;
-            //    // check if the TextBox controls contain valid numeric values
-            //    if (!double.TryParse(textBox1.Text, out x1) || !double.TryParse(textBox2.Text, out x2))
-            //    {
-            //        MessageBox.Show("Пожалуйста введите корректные значения X1 и X2");
-            //        return;
-            //    }
-            //    // check if x2 > x1
-            //    if (x2 <= x1)
-            //    {
-            //        MessageBox.Show("Значение X2 должно быть больше значения X1");
-            //        return;
-            //    }
-            //}
-            //List<double> xValues = new List<double>();
-            //List<double> yValues = new List<double>();
-            void DrawFunction(double x1, double x2, Series series, Equation equation)
+        //void IsEmpty()
+        //{
+        //    double x1, x2;
+        //    // check if the TextBox controls contain valid numeric values
+        //    if (!double.TryParse(textBox1.Text, out x1) || !double.TryParse(textBox2.Text, out x2))
+        //    {
+        //        MessageBox.Show("Пожалуйста введите корректные значения X1 и X2");
+        //        return;
+        //    }
+        //    // check if x2 > x1
+        //    if (x2 <= x1)
+        //    {
+        //        MessageBox.Show("Значение X2 должно быть больше значения X1");
+        //        return;
+        //    }
+        //}
+        //List<double> xValues = new List<double>();
+        //List<double> yValues = new List<double>();
+        void DrawIntegrateFunction(double x1, double x2, Series series, Equation equation)
+        {
+            RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+            // calculate the integrated function on the given segment
+
+            Equation integratedEquation = integrator.Integrate(x1, x2);
+
+            // evaluate the integrated function at a number of points within the desired range
+            int numPoints = 100;
+            double step = (x2 - x1) / numPoints;
+            double[] xValues = new double[numPoints + 1];
+            double[] yValues = new double[numPoints + 1];
+            for (int i = 0; i <= numPoints; i++)
+            {
+                xValues[i] = x1 + i * step;
+                yValues[i] = integratedEquation.GetValue(xValues[i]);
+            }
+            // bind the data to the Series object
+            series.Points.DataBindXY(xValues, yValues);
+
+            // set the ChartType and XValueType/YValueType properties
+            series.ChartType = SeriesChartType.Point;
+            series.XValueType = ChartValueType.Double;
+            series.YValueType = ChartValueType.Double;
+
+            // customize the appearance and behavior of the Chart and Series
+            series.Name = "My Function";
+            series.Color = Color.Red;
+            series.BorderWidth = 3;
+            series.MarkerStyle = MarkerStyle.Circle;
+            series.MarkerSize = 8;
+            // bind the data to the Series object and display the chart
+            chart1.Series["Series1"].Points.DataBindXY(xValues, yValues);
+        }
+        void DrawFunction(double x1, double x2, Series series, Equation equation)
         {
             // calculate the value of the function at a number of points within the desired range
             int numPoints = 100;
@@ -314,6 +348,28 @@ namespace Laba6v1
             // define an Equation object representing the function to be plotted
             Equation equation = new CosXEquation(2);
             DrawFunction(x1, x2, series, equation);            
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            double x1, x2;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            {
+                return;
+            }
+            double x = double.Parse(textBox1.Text);
+            double y = double.Parse(textBox2.Text);
+            // create a new Chart control
+            Chart chart = new Chart();
+
+            // add a Series object to the Chart
+            Series series = new Series();
+            chart.Series.Add(series);
+
+
+            // define an Equation object representing the function to be plotted
+            Equation equation = new QuadEquation(1,2,3);
+            DrawIntegrateFunction(x1, x2, series, equation);
         }
     }
 }
