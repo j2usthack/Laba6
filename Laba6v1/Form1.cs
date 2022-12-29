@@ -371,5 +371,27 @@ namespace Laba6v1
             Equation equation = new QuadEquation(1,2,3);
             DrawIntegrateFunction(x1, x2, series, equation);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            double x1, x2;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            {
+                return;
+            }
+            double x = double.Parse(textBox1.Text);
+            double y = double.Parse(textBox2.Text);
+            // create a new Chart control
+            Chart chart = new Chart();
+
+            // add a Series object to the Chart
+            Series series = new Series();
+            chart.Series.Add(series);
+
+
+            // define an Equation object representing the function to be plotted
+            Equation equation = new SinX(1);
+            DrawFunction(x1, x2, series, equation);
+        }
     }
 }
