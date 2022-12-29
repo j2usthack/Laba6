@@ -62,7 +62,7 @@ namespace Laba6v1
             Equation integratedEquation = integrator.Integrate(x1, x2);
 
             // evaluate the integrated function at a number of points within the desired range
-            int numPoints = 100;
+            int numPoints = 10000;
             double step = (x2 - x1) / numPoints;
             double[] xValues = new double[numPoints + 1];
             double[] yValues = new double[numPoints + 1];
@@ -91,7 +91,7 @@ namespace Laba6v1
         void DrawFunction(double x1, double x2, Series series, Equation equation)
         {
             // calculate the value of the function at a number of points within the desired range
-            int numPoints = 100;
+            int numPoints = 10000;
             double step = (x2 - x1) / numPoints;
             double[] xValues = new double[numPoints + 1];
             double[] yValues = new double[numPoints + 1];
