@@ -22,13 +22,13 @@ namespace Laba6v1
                 MessageBox.Show("Поле X1 и X2 не может быть пустым!");
                 return false;
             }
-            // check if the TextBox controls contain valid numeric values
+            // проверка, содержат ли элементы управления текстовым полем допустимые числовые значения
             if (!double.TryParse(textBox1.Text, out x1) || !double.TryParse(textBox2.Text, out x2))
             {
                 MessageBox.Show("Пожалуйста введите корректное значение X1 и X2!");
                 return false;
             }
-            // check if x2 > x1
+            // проверка если x2 > x1
             if (x2 <= x1)
             {
                 MessageBox.Show("Значение X2 должно быть больше значения X1!");
@@ -57,11 +57,11 @@ namespace Laba6v1
         void DrawIntegrateFunction(double x1, double x2, Series series, Equation equation)
         {
             RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
-            // calculate the integrated function on the given segment
+            // вычислить интегрированную функцию на данном отрезке
 
             Equation integratedEquation = integrator.Integrate(x1, x2);
 
-            // evaluate the integrated function at a number of points within the desired range
+            // оценить интегрированную функцию в ряде точек в пределах желаемого диапазона
             int numPoints = 10000;
             double step = (x2 - x1) / numPoints;
             double[] xValues = new double[numPoints + 1];
@@ -71,26 +71,26 @@ namespace Laba6v1
                 xValues[i] = x1 + i * step;
                 yValues[i] = integratedEquation.GetValue(xValues[i]);
             }
-            // bind the data to the Series object
+            // привязать данные к объекту серии
             series.Points.DataBindXY(xValues, yValues);
 
-            // set the ChartType and XValueType/YValueType properties
+            // установить ChartType и XValueType/YValueType properties
             series.ChartType = SeriesChartType.Point;
             series.XValueType = ChartValueType.Double;
             series.YValueType = ChartValueType.Double;
 
-            // customize the appearance and behavior of the Chart and Series
+            // настройка внешнего вида и поведения диаграммы и ряда
             series.Name = "My Function";
             series.Color = Color.Red;
             series.BorderWidth = 3;
             series.MarkerStyle = MarkerStyle.Circle;
             series.MarkerSize = 8;
-            // bind the data to the Series object and display the chart
+            // привязать данные к объекту серии и отобразить диаграмму
             chart1.Series["Series1"].Points.DataBindXY(xValues, yValues);
         }
         void DrawFunction(double x1, double x2, Series series, Equation equation)
         {
-            // calculate the value of the function at a number of points within the desired range
+            // вычислить значение функции в ряде точек в пределах желаемого диапазона
             int numPoints = 10000;
             double step = (x2 - x1) / numPoints;
             double[] xValues = new double[numPoints + 1];
@@ -101,15 +101,15 @@ namespace Laba6v1
                 yValues[i] = equation.GetValue(xValues[i]);
             }
 
-            // bind the data to the Series object
+            // привязать данные к объекту серии
             series.Points.DataBindXY(xValues, yValues);
 
-            // set the ChartType and XValueType/YValueType properties
+            // установить ChartType и XValueType/YValueType properties
             series.ChartType = SeriesChartType.Point;
             series.XValueType = ChartValueType.Double;
             series.YValueType = ChartValueType.Double;
 
-            // customize the appearance and behavior of the Chart and Series
+            // настройка внешнего вида и поведения диаграммы и рядаs
             series.Name = "My Function";
             series.Color = Color.Red;
             series.BorderWidth = 3;
@@ -225,14 +225,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);           
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new SinEquation(2);
             DrawFunction(x1, x2, series, equation);
             
@@ -253,14 +253,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new QuadEquation(1, 2, 3);
             DrawFunction(x1, x2, series, equation);           
         }
@@ -274,14 +274,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new ModSinEquation(2);
             DrawFunction(x1, x2, series, equation);        
         }
@@ -295,14 +295,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new CosEquation(2,2);
             DrawFunction(x1, x2, series, equation);            
         }
@@ -316,14 +316,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new ModSinXEquation(2);
             DrawFunction(x1, x2, series, equation);           
         }
@@ -337,15 +337,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
-           
 
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new CosXEquation(2);
             DrawFunction(x1, x2, series, equation);            
         }
@@ -359,15 +358,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new QuadEquation(1,2,3);
             DrawIntegrateFunction(x1, x2, series, equation);
         }
@@ -381,15 +379,14 @@ namespace Laba6v1
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // create a new Chart control
+            // создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // add a Series object to the Chart
+            // добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-
-            // define an Equation object representing the function to be plotted
+            // определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new SinX(1);
             DrawFunction(x1, x2, series, equation);
         }

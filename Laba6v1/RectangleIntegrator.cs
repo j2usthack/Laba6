@@ -17,7 +17,7 @@ namespace Laba6v1
 
         public override double Integrate(double x1, double x2)
         {
-            // check the validity of the parameters
+            // проверка правильности параметров
             if (x1 >= x2)
             {
                 throw new ArgumentException("Правое поле масштабирования должно быть больше левого!");
