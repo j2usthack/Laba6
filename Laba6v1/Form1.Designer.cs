@@ -45,6 +45,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,13 +72,13 @@
             series2.YValuesPerPoint = 32;
             series2.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(776, 300);
+            this.chart1.Size = new System.Drawing.Size(1201, 430);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 386);
+            this.button1.Location = new System.Drawing.Point(21, 558);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 43);
             this.button1.TabIndex = 1;
@@ -80,7 +88,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(593, 386);
+            this.button2.Location = new System.Drawing.Point(524, 558);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 43);
             this.button2.TabIndex = 2;
@@ -90,7 +98,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 12);
+            this.button3.Location = new System.Drawing.Point(432, 509);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(86, 43);
             this.button3.TabIndex = 3;
@@ -100,7 +108,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(96, 386);
+            this.button4.Location = new System.Drawing.Point(105, 558);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(98, 43);
             this.button4.TabIndex = 4;
@@ -110,7 +118,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(307, 386);
+            this.button5.Location = new System.Drawing.Point(316, 558);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(98, 43);
             this.button5.TabIndex = 5;
@@ -120,7 +128,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(200, 386);
+            this.button6.Location = new System.Drawing.Point(209, 558);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(101, 43);
             this.button6.TabIndex = 6;
@@ -130,7 +138,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(411, 386);
+            this.button7.Location = new System.Drawing.Point(420, 558);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(98, 43);
             this.button7.TabIndex = 7;
@@ -172,7 +180,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(353, 21);
+            this.button8.Location = new System.Drawing.Point(33, 529);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(292, 23);
             this.button8.TabIndex = 12;
@@ -182,7 +190,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(658, 21);
+            this.button9.Location = new System.Drawing.Point(339, 529);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 13;
@@ -190,11 +198,84 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(487, 8);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(343, 47);
+            this.richTextBox1.TabIndex = 14;
+            this.richTextBox1.Text = "";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(1092, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 15;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(868, 558);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 16;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(974, 558);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 17;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(1080, 558);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(897, 542);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "a";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1008, 542);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "b";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1113, 542);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "c";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1303, 643);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label2);
@@ -234,6 +315,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

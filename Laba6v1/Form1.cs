@@ -13,13 +13,31 @@ namespace Laba6v1
 {
     public partial class Form1 : Form
     {
-        private bool ValidateInputs(TextBox textBox1, TextBox textBox2, out double x1, out double x2)
+        private bool ValidateInputs(TextBox textBox1, TextBox textBox2, out double x1, out double x2, out double a1, out double b1, out double c1)
         {
+            a1 = 0;
+            b1 = 0;
+            c1 = 0;
             x2 = 0;
             x1 = 0;
             if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text))
             {
                 MessageBox.Show("Поле X1 и X2 не может быть пустым!");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(textBox3.Text))
+            {
+                MessageBox.Show("Поле перемнной а не может быть пустым!");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(textBox4.Text) && textBox4.Enabled==true)
+            {
+                MessageBox.Show("Поле перемнной b не может быть пустым!");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(textBox5.Text) && textBox5.Enabled==true)
+            {
+                MessageBox.Show("Поле перемнной c не может быть пустым!");
                 return false;
             }
             // проверка, содержат ли элементы управления текстовым полем допустимые числовые значения
@@ -61,8 +79,10 @@ namespace Laba6v1
 
             Equation integratedEquation = integrator.Integrate(x1, x2);
 
+            richTextBox1.Text += "The result of the integration is: " + integratedEquation.GetValue(x2) + Environment.NewLine;
+
             // оценить интегрированную функцию в ряде точек в пределах желаемого диапазона
-            int numPoints = 10000;
+            int numPoints = 1000;
             double step = (x2 - x1) / numPoints;
             double[] xValues = new double[numPoints + 1];
             double[] yValues = new double[numPoints + 1];
@@ -91,7 +111,7 @@ namespace Laba6v1
         void DrawFunction(double x1, double x2, Series series, Equation equation)
         {
             // вычислить значение функции в ряде точек в пределах желаемого диапазона
-            int numPoints = 10000;
+            int numPoints = 1000;
             double step = (x2 - x1) / numPoints;
             double[] xValues = new double[numPoints + 1];
             double[] yValues = new double[numPoints + 1];
@@ -120,6 +140,31 @@ namespace Laba6v1
         public Form1()
         {
             InitializeComponent();
+
+            comboBox1.Items.Add(new CosEquation(10, 10));
+            comboBox1.Items.Add(new SinEquation(10));
+            comboBox1.Items.Add(new QuadEquation(10,10,10));
+            comboBox1.Items.Add(new ModSinEquation(10));
+            comboBox1.Items.Add(new ModSinXEquation(10));
+            comboBox1.Items.Add(new CosXEquation(10));
+            comboBox1.Items.Add(new SinX(10));
+            button1.Hide();
+            button3.Hide();
+            button4.Hide();
+            button5.Hide();
+            button6.Hide();
+            button7.Hide();
+            button8.Hide();
+            button9.Hide();
+            button1.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
+            button7.Enabled = false;
+            button8.Enabled = false;
+            button9.Enabled = false;
+
 
             //xValues.Add(0);
             //yValues.Add(1);
@@ -218,8 +263,8 @@ namespace Laba6v1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
@@ -246,8 +291,8 @@ namespace Laba6v1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
@@ -267,8 +312,8 @@ namespace Laba6v1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
@@ -288,8 +333,8 @@ namespace Laba6v1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
@@ -309,8 +354,8 @@ namespace Laba6v1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
@@ -330,8 +375,8 @@ namespace Laba6v1
 
         private void button7_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
@@ -351,44 +396,264 @@ namespace Laba6v1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // создать новый компонент Chart control
+            //// создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // добавьте объект серии на диаграмму
+            //// добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // определите объект уравнения, представляющий функцию, подлежащую построению
-            Equation equation = new QuadEquation(1,2,3);
+            //// определите объект уравнения, представляющий функцию, подлежащую построению
+            Equation equation = new SinEquation(1);
             DrawIntegrateFunction(x1, x2, series, equation);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            double x1, x2;
-            if (!ValidateInputs(textBox1, textBox2, out x1, out x2))
+            double x1, x2, a1, b1, c1;
+            if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
             {
                 return;
             }
             double x = double.Parse(textBox1.Text);
             double y = double.Parse(textBox2.Text);
-            // создать новый компонент Chart control
+            //// создать новый компонент Chart control
             Chart chart = new Chart();
 
-            // добавьте объект серии на диаграмму
+            //// добавьте объект серии на диаграмму
             Series series = new Series();
             chart.Series.Add(series);
 
-            // определите объект уравнения, представляющий функцию, подлежащую построению
+            //// определите объект уравнения, представляющий функцию, подлежащую построению
             Equation equation = new SinX(1);
             DrawFunction(x1, x2, series, equation);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "Laba6v1.SinEquation")
+            {
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                label4.Hide();
+                label5.Hide();
+                textBox4.Hide();
+                textBox5.Hide();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new SinEquation(a);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);
+
+                richTextBox1.Text += "Результат интегрирования SinEquation уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+               
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Laba6v1.ModSinEquation") 
+            {
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                label4.Hide();
+                label5.Hide();
+                textBox4.Hide();
+                textBox5.Hide();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new ModSinEquation(a);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);
+
+                richTextBox1.Text += "Результат интегрирования ModSinEquation уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Laba6v1.ModSinXEquation")
+            {
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                label4.Hide();
+                label5.Hide();
+                textBox4.Hide();
+                textBox5.Hide();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new ModSinXEquation(a);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);
+
+                richTextBox1.Text += "Результат интегрирования ModSinXEquation уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Laba6v1.CosEquation")
+            {
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+                textBox5.Enabled = false;
+                textBox4.Show();
+                label4.Show();
+                label5.Hide();
+                textBox5.Hide();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                double b = double.Parse(textBox4.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new CosEquation(a, b);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);
+
+                richTextBox1.Text += "Результат интегрирования CosEquation уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Laba6v1.CosXEquation")
+            {
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                label4.Hide();
+                label5.Hide();
+                textBox4.Hide();
+                textBox5.Hide();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                double b = double.Parse(textBox4.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new CosXEquation(a);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);
+
+                richTextBox1.Text += "Результат интегрирования CosXEquation уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Laba6v1.SinX")
+            {
+                textBox3.Enabled = true;
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                label4.Hide();
+                label5.Hide();
+                textBox4.Hide();
+                textBox5.Hide();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new SinX(a);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);
+
+                richTextBox1.Text += "Результат интегрирования SinX уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Laba6v1.QuadEquation")
+            {
+                textBox4.Enabled = true;
+                textBox5.Enabled = true;
+                label4.Show();
+                label5.Show();
+                textBox4.Show();
+                textBox5.Show();
+                double x1, x2, a1, b1, c1;
+                if (!ValidateInputs(textBox1, textBox2, out x1, out x2, out a1, out b1, out c1))
+                {
+                    return;
+                }
+                double x = double.Parse(textBox1.Text);
+                double y = double.Parse(textBox2.Text);
+                double a = double.Parse(textBox3.Text);
+                double b = double.Parse(textBox4.Text);
+                double c = double.Parse(textBox5.Text);
+                // создать новый компонент Chart control
+                Chart chart = new Chart();
+                Equation equation = new QuadEquation(a, b, c);
+                RectangleIntegratorv2 integrator = new RectangleIntegratorv2(equation, 0.1);
+                // вычислить интегрированную функцию на данном отрезке
+
+                Equation integratedEquation = integrator.Integrate(x1, x2);               
+                richTextBox1.Text += "Результат интегрирования квадратного уравнения методом прямоугольников: " + Math.Round(integratedEquation.GetValue(x2), 1) + Environment.NewLine;
+                // добавьте объект серии на диаграмму
+                Series series = new Series();
+                chart.Series.Add(series);
+                DrawFunction(x1, x2, series, equation);
+            }
         }
     }
 }
